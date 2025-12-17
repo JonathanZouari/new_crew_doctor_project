@@ -14,11 +14,13 @@
 
 ### קבצים שנוצרו אוטומטית:
 
+- ✅ `main.py` - נקודת הכניסה הראשית לאפליקציה (נדרש ל-Railway)
 - ✅ `Procfile` - מגדיר איך להריץ את האפליקציה
 - ✅ `railway.toml` - קונפיגורציה של Railway
 - ✅ `runtime.txt` - גרסת Python
 - ✅ `requirements.txt` - תלויות Python (עודכן עם gunicorn)
 - ✅ `.railwayignore` - קבצים להתעלם מהם בפריסה
+- ✅ `.gitignore` - מונע העלאה של `.env` ל-Git
 
 ## 📦 שלבי הפריסה ב-Railway
 
