@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת אבחון רפואי - Medical Diagnostic System</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏥 מערכת אבחון רפואי מתקדמת</h1>
+            <h2>Advanced AI-Powered Medical Diagnostic System</h2>
+            <p class="subtitle">מערכת ניתוח תסמינים מבוססת בינה מלאכותית</p>
+        </header>
+
+        <!-- Warning Banner -->
+        <div class="warning-banner">
+            <strong>⚠️ הצהרה חשובה / Important Disclaimer</strong>
+            <p>מערכת זו מיועדת למטרות חינוכיות בלבד ואינה מהווה תחליף לבדיקה רפואית מקצועית.</p>
+            <p>This system is for educational purposes only and does not replace professional medical care.</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Section -->
+            <div class="input-section card">
+                <h3>📝 תיאור התסמינים / Describe Your Symptoms</h3>
+                <p class="instructions">
+                    אנא פרט/י את התסמינים שלך בצורה מפורטת ככל האפשר. כלול/י:
+                </p>
+                <ul class="instructions-list">
+                    <li>גיל ומין / Age and gender</li>
+                    <li>תסמינים נוכחיים / Current symptoms</li>
+                    <li>מתי התחילו התסמינים / When symptoms started</li>
+                    <li>עוצמת התסמינים (1-10) / Severity (1-10)</li>
+                    <li>היסטוריה רפואית / Medical history</li>
+                    <li>תרופות נוכחיות / Current medications</li>
+                    <li>אלרגיות ידועות / Known allergies</li>
+                </ul>
+
+                <textarea
+                    id="patientInput"
+                    placeholder="דוגמה: אני בן/בת 45. מזה 3 ימים אני סובל/ת מכאב חזה...&#10;&#10;Example: I'm a 45-year-old. For 3 days I've had chest pain..."
+                    rows="8"
+                ></textarea>
+
+                <button id="analyzeBtn" class="btn btn-primary">
+                    🔍 נתח תסמינים / Analyze Symptoms
+                </button>
+
+                <button id="clearBtn" class="btn btn-secondary">
+                    🗑️ נקה / Clear
+                </button>
+            </div>
+
+            <!-- Loading Section -->
+            <div id="loadingSection" class="loading-section" style="display: none;">
+                <div class="spinner"></div>
+                <p>מנתח את התסמינים שלך... / Analyzing your symptoms...</p>
+                <p class="loading-details">תהליך זה עשוי לקחת 1-2 דקות</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="card">
+                    <div class="results-header">
+                        <h3>📄 תוצאות האבחון / Diagnostic Results</h3>
+                        <button id="downloadBtn" class="btn btn-small">
+                            💾 שמור דוח / Save Report
+                        </button>
+                    </div>
+                    <div id="resultsContent" class="results-content"></div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="errorSection" class="error-section" style="display: none;">
+                <div class="card error-card">
+                    <h3>❌ שגיאה / Error</h3>
+                    <p id="errorMessage"></p>
+                    <button id="retryBtn" class="btn btn-secondary">
+                        🔄 נסה שוב / Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>
+                    <strong>זכרו:</strong> תמיד היוועצו ברופא מוסמך לאבחון וטיפול רפואי
+                </p>
+                <p>
+                    <strong>Remember:</strong> Always consult a licensed physician for medical diagnosis and treatment
+                </p>
+                <p class="footer-note">
+                    Powered by CrewAI & GPT-4 | Version 1.0.0
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../static/app.js"></script>
+</body>
+</html>
