@@ -84,7 +84,14 @@ Railway יתחיל להריץ את ה-deployment אוטומטית:
 
 לאחר ה-deployment, בדוק:
 
-### 1. Health Check
+### 1. **Frontend (המסך הכחול!)** 🎨
+```
+https://your-project-name.up.railway.app/
+```
+
+**זה המסך הראשי!** תראה ממשק יפה בעברית לניתוח תסמינים
+
+### 2. Health Check
 ```
 https://your-project-name.up.railway.app/health
 ```
@@ -98,19 +105,19 @@ https://your-project-name.up.railway.app/health
 }
 ```
 
-### 2. API Documentation
+### 3. API Documentation
 ```
 https://your-project-name.up.railway.app/docs
 ```
 
-תראה ממשק Swagger UI אינטראקטיבי
+תראה ממשק Swagger UI אינטראקטיבי (למפתחים)
 
-### 3. Root Endpoint
+### 4. API Info
 ```
-https://your-project-name.up.railway.app/
+https://your-project-name.up.railway.app/api
 ```
 
-יציג מידע על ה-API
+יציג מידע על ה-API endpoints
 
 ## 🧪 בדיקת ניתוח תסמינים
 

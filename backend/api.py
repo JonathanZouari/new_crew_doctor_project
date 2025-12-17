@@ -12,9 +12,12 @@ sys.path.insert(0, str(project_root))
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from typing import Dict, Any
 import uvicorn
+import os
 
 from backend.app import MedicalService
 
@@ -37,6 +40,19 @@ app.add_middleware(
 # Initialize medical service
 medical_service = MedicalService()
 
+# ============================================================================
+# MOUNT STATIC FILES AND FRONTEND
+# ============================================================================
+
+# Get paths
+current_dir = Path(__file__).parent.parent
+frontend_dir = current_dir / "frontend"
+static_dir = frontend_dir / "static"
+templates_dir = frontend_dir / "templates"
+
+# Mount static files (CSS, JS)
+if static_dir.exists():
+    app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 
 # ============================================================================
 # REQUEST/RESPONSE MODELS
@@ -72,9 +88,29 @@ class HealthCheckResponse(BaseModel):
 # API ENDPOINTS
 # ============================================================================
 
-@app.get("/", tags=["General"])
-async def root():
-    """Root endpoint with API information"""
+@app.get("/", tags=["General"], include_in_schema=False)
+async def serve_frontend():
+    """Serve the frontend HTML page"""
+    index_path = templates_dir / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    else:
+        # Fallback to API info if frontend not found
+        return {
+            "name": "Medical Diagnostic API",
+            "version": "1.0.0",
+            "description": "AI-powered medical symptom analysis",
+            "endpoints": {
+                "health": "/health",
+                "analyze": "/api/analyze",
+                "docs": "/docs"
+            }
+        }
+
+
+@app.get("/api", tags=["General"])
+async def api_info():
+    """API information endpoint"""
     return {
         "name": "Medical Diagnostic API",
         "version": "1.0.0",
@@ -82,7 +118,8 @@ async def root():
         "endpoints": {
             "health": "/health",
             "analyze": "/api/analyze",
-            "docs": "/docs"
+            "docs": "/docs",
+            "frontend": "/"
         }
     }
 

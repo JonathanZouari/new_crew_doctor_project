@@ -67,8 +67,5 @@ desktop.ini
 # Batch files
 *.bat
 
-# Frontend (if not needed for backend deployment)
-frontend/
-
 # Example files
 example_usage.py

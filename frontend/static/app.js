@@ -1,7 +1,8 @@
 // Medical Diagnostic System - Frontend JavaScript
 
 // Configuration
-const API_BASE_URL = 'http://localhost:8000';
+// Use relative URL for API calls - works both locally and in production
+const API_BASE_URL = window.location.origin;
 
 // DOM Elements
 const patientInput = document.getElementById('patientInput');
